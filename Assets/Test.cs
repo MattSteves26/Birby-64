@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class Test : MonoBehaviour{
 
     Rigidbody rb;
-
+    public float movespeed;
     // Start is called before the first frame update
     void Start(){
 
         rb = GetComponent<Rigidbody>();
+        movespeed = 2f;
         
     }
 
@@ -25,7 +26,7 @@ public class Test : MonoBehaviour{
         }
 
         //MOVEMENT
-        if (Input.GetKeyDown(KeyCode.W))
+        /*if (Input.GetKeyDown(KeyCode.W))
         {
             rb.AddForce(Vector3.forward * 100);
         }
@@ -40,8 +41,8 @@ public class Test : MonoBehaviour{
         if (Input.GetKeyDown(KeyCode.A))
         {
             rb.AddForce(Vector3.left * 100);
-        }
-
+        }*/
+        transform.Translate(movespeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movespeed * Input.GetAxis("Vertical") * Time.deltaTime);
 
         //RESET
         if (Input.GetKeyDown(KeyCode.R))
