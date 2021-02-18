@@ -2683,10 +2683,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1903432992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0588fbb421b4f3d4ea915a7c2f31cea4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fe510ab9a6e58248bf2da0a8a36690c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 0
+  jumpTimer: 0
+  jumpDeltaTime: 0.3
+  fallMultiplier: 2.5
 --- !u!65 &1903432994
 BoxCollider:
   m_ObjectHideFlags: 0
