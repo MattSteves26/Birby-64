@@ -26,7 +26,10 @@ public class EnemyMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        if(collision.gameObject.layer != 8)
+        {
+            isGrounded = true;
+        }
     }
 
     void OnCollisionExit(Collision collision)

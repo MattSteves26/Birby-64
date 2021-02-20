@@ -43,7 +43,14 @@ public class player : MonoBehaviour{
     //Called once every physics update
     private void FixedUpdate()
     {
+        //rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.velocity = new Vector3(horizontlInput * movespeed, rb.velocity.y, 0);
+
+        //make the player fall faster
+        if(rb.velocity.y < 3){
+            
+            rb.AddForce(new Vector3(0, -1.0f, 0)*rb.mass*10);  
+        }
         
         if(Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0) //check if the player is on the ground, so we can control double jumping
         {
