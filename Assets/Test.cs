@@ -5,62 +5,54 @@ using UnityEngine.SceneManagement;
 
 public class Test : MonoBehaviour{
 
+
+    //Initial Variables
     Rigidbody rb;
     public float movespeed;
+
+    //Jump vars
+    public float jumpTimer;
+    public float jumpDeltaTime = 0.3f;      //how long to wait between jumps
+    public float fallMultiplier = 2f;
+
+
+
     // Start is called before the first frame update
     void Start(){
 
         rb = GetComponent<Rigidbody>();
-        movespeed = 2f;
+        movespeed = 5f;
         
     }
 
     // Update is called once per frame
     void Update(){
 
+        //Jumping
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > jumpTimer){
+            rb.AddForce(Vector3.up * 450);
+            jumpTimer = Time.time + jumpDeltaTime;
+         }
+        
+        //speed up the fall of the jump to make it not feel as "floaty" (work in progress)
+        if(rb.velocity.y < 0){
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        
 
-        if (Input.GetKeyDown(KeyCode.Space)){
-
-            rb.AddForce(Vector3.up * 500);
-            //Destroy(gameObject);
-        }
-
-        //MOVEMENT
-        /*if (Input.GetKeyDown(KeyCode.W))
-        {
-            rb.AddForce(Vector3.forward * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            rb.AddForce(Vector3.back * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            rb.AddForce(Vector3.right * 100);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            rb.AddForce(Vector3.left * 100);
-        }*/
+        //Movement
         transform.Translate(movespeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movespeed * Input.GetAxis("Vertical") * Time.deltaTime);
 
-        //RESET
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Level2");
-        }
+
     }
 
 
-    //CLICK TO KILL PLAYER
-    private void OnMouseDown(){
 
-        Destroy(gameObject);
-    }
 
     //COLLISION
     private void OnCollisionEnter(Collision collision)
     {
+           //Die when touching an enemy
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
