@@ -36,7 +36,7 @@ public class SmoothFollow : MonoBehaviour
 		currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
 
 		// Damp the height
-		currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+		//currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
 
 		// Convert the angle into a rotation
 		var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
@@ -50,6 +50,6 @@ public class SmoothFollow : MonoBehaviour
 		transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
 
 		// Always look at the target
-		transform.LookAt(target);
+		//transform.LookAt(target);
 	}
 }
