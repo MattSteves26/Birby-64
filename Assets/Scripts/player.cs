@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+//There are two jump functions in this code, needs to be fixed
 public class player : MonoBehaviour{
 
     // Initial Variables
@@ -13,6 +15,7 @@ public class player : MonoBehaviour{
     [SerializeField] private bool lockZAxis = false;
     // SerializeField allows the varible to be set in Unity. I'm initializing these varibles here, because if they're initialized in start, then the values we set in unity is reset.
     [SerializeField] private int jumpCount = 1;
+    [SerializeField] private float jumpforce;
     [SerializeField] private float movespeed = 5f; 
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask;
@@ -23,7 +26,9 @@ public class player : MonoBehaviour{
     [SerializeField] public float fallMultiplier = 2f;
     
     public Transform modelchild;
-    
+
+    //UI
+    public Canvas DeadPlayer;
     // Start is called before the first frame update
     void Start(){
         modelchild = this.gameObject.transform.GetChild(0);
@@ -37,15 +42,15 @@ public class player : MonoBehaviour{
         float ZAxisInput = Input.GetAxis("Vertical");
         // Jump and movement update, this makes it so the movement is set to occur at the next physics update, rather than this frame update.
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > jumpTimer && jumpCount > 0){
-            rb.AddForce(Vector3.up * 450);
+            rb.AddForce(Vector3.up * jumpforce);
             jumpTimer = Time.time + jumpDeltaTime;
          }
-        
+
         // speed up the fall of the jump to make it not feel as "floaty" (work in progress)
         if(rb.velocity.y < 0){
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        
+
         // Movement
         if (!lockZAxis) {
             transform.Translate(movespeed * XAxisInput * Time.deltaTime, 0f, movespeed * ZAxisInput * Time.deltaTime);
@@ -102,6 +107,7 @@ public class player : MonoBehaviour{
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag == "Enemy"){
             Destroy(gameObject);
+            DeadPlayer.enabled = true;
             //Destroy(collision.gameObject); 
             
         }
