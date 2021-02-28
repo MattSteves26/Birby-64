@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using BansheeGz.BGSpline.Components;
 
 
 //There are two jump functions in this code, needs to be fixed
@@ -11,6 +12,8 @@ public class player : MonoBehaviour{
     // Initial Variables
     private Rigidbody rb;
     private float horizontlInput;
+    [SerializeField] BGCcMath spline;
+    private float xdist = 0;
     [SerializeField] float distToGround;
     [SerializeField] private bool lockZAxis = false;
     // SerializeField allows the varible to be set in Unity. I'm initializing these varibles here, because if they're initialized in start, then the values we set in unity is reset.
@@ -21,9 +24,11 @@ public class player : MonoBehaviour{
     [SerializeField] private float fastFallSpeed = 3;
     [SerializeField] private float jumpGravity = 1000;
     [SerializeField] private float movespeed = 5f; 
+    [SerializeField] private float splinespeed = 0.1f; 
     [SerializeField] private float terminal = -10; 
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask;
+    
     
     //Jump vars
     public float jumpTimer;
@@ -31,14 +36,16 @@ public class player : MonoBehaviour{
     [SerializeField] public float fallMultiplier = 2f;
     
     public Transform modelchild;
-
+    
+    public float leftAngle = 110;
+    public float rightAngle = -110;
+    
     //UI
     public Canvas DeadPlayer;
     // Start is called before the first frame update
     void Start(){
         modelchild = this.gameObject.transform.GetChild(0);
         rb = GetComponent<Rigidbody>();
-        
         
     }
 
@@ -62,19 +69,27 @@ public class player : MonoBehaviour{
    
 
         // Movement
-        if (!lockZAxis) {
+        if (spline) {
+            xdist += XAxisInput * splinespeed;
+            
+            Vector3 tangent;
+            Vector3 newpos = spline.CalcPositionAndTangentByDistance(xdist, out tangent);
+            transform.position = new Vector3(newpos.x, transform.position.y, newpos.z);
+            transform.rotation = Quaternion.LookRotation(tangent);   
+        }
+        else if (!lockZAxis) {
             transform.Translate(movespeed * XAxisInput * Time.deltaTime, 0f, movespeed * ZAxisInput * Time.deltaTime);
         } 
-        else {
+        else if (lockZAxis) {
             transform.Translate(movespeed * XAxisInput  * Time.deltaTime, 0f, 0);
         }
-        
+
         // Change rotation
         if (XAxisInput > 0) {
-            modelchild.localRotation = Quaternion.Euler(0,110,0);
+            modelchild.localRotation = Quaternion.Euler(0,leftAngle,0);
         }
         else if (XAxisInput < 0) {
-            modelchild.localRotation = Quaternion.Euler(0,-110,0);
+            modelchild.localRotation = Quaternion.Euler(0,rightAngle,0);
         } 
             
         // RESET
@@ -87,9 +102,21 @@ public class player : MonoBehaviour{
     // Called once every physics update
     private void FixedUpdate()
     {
-        //rb.interpolation = RigidbodyInterpolation.Interpolate;
-        rb.velocity = new Vector3(horizontlInput * movespeed, rb.velocity.y, 0);
-
+        /*//rb.interpolation = RigidbodyInterpolation.Interpolate;
+        if (!spline) {
+            rb.velocity = new Vector3(horizontlInput * movespeed, rb.velocity.y, 0);
+        } 
+        else {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            
+            xdist += horizontlInput * movespeed;
+            
+            Vector3 tangent;
+            Vector3 newpos = spline.CalcPositionAndTangentByDistance(xdist, out tangent);
+            transform.position = new Vector3(newpos.x, transform.position.y, newpos.z);
+            transform.rotation = Quaternion.LookRotation(tangent);
+            
+        }*/
         //make the player fall faster along with having a terminal velocity
         if (rb.velocity.y > terminal) {
             if(rb.velocity.y < fastFallSpeed){

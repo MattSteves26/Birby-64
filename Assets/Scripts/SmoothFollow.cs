@@ -16,6 +16,9 @@ public class SmoothFollow : MonoBehaviour
 	// How much we 
 	public float heightDamping = 2.0f;
 	public float rotationDamping = 3.0f;
+    
+    public float maxHeight = 5.0f;
+    public float minHeight = 0.0f;
 
 	// Place the script in the Camera-Control group in the component menu
 	[AddComponentMenu("Camera-Control/Smooth Follow")]
@@ -36,7 +39,10 @@ public class SmoothFollow : MonoBehaviour
 		currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
 
 		// Damp the height
-		//currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+		currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+        
+        // Clamp height to specifications
+        currentHeight = Mathf.Clamp(currentHeight, minHeight, maxHeight);
 
 		// Convert the angle into a rotation
 		var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
