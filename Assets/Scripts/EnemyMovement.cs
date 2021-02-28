@@ -1,24 +1,44 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    
     private Rigidbody rb;
-    private bool isGrounded;
     
-    // Start is called before the first frame update
+    private bool movingRight = true;
+
+    public Transform player;
+    public float range = 50.0f;
+  
+    private bool onRange = false;
+
+    public float distance;
+
+    private Vector3 pos1 = new Vector3(-4, 0, 0);
+    private Vector3 pos2 = new Vector3(4, 0, 0);
+    public float speed = 1.0f;
+
+    public Transform groundDetect;
+
+    private bool isGrounded;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-   
-    // FixedUpdate is called once per physics update
+    void Update()
+    {
+
+        transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
+
+        onRange = Vector3.Distance(transform.position, player.position) < range;
+    }
+
     void FixedUpdate()
     {
-        if(isGrounded)
+        if (isGrounded)
         {
             rb.AddForce(Vector3.up * 25);
         }
@@ -26,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer != 8)
+        if (collision.gameObject.layer != 8)
         {
             isGrounded = true;
         }
@@ -36,4 +56,6 @@ public class EnemyMovement : MonoBehaviour
     {
         isGrounded = false;
     }
+
+
 }
