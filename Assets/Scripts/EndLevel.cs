@@ -1,24 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class DeadPlayer : MonoBehaviour
+public class EndLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Canvas dp;
-   
+    public Canvas EndLevelUI;
+
     public void onRestart()
     {
         //Reset Everything back to the start
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        dp.enabled = false;
+        EndLevelUI.enabled = false;
     }
 
     public void onQuit()
     {
         //go back to menu
         SceneManager.LoadScene(0);
+    }
+
+    public void NextLevel()
+    {
+        Debug.Log("NEXT LEVEL");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

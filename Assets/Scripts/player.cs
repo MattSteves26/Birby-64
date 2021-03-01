@@ -42,6 +42,7 @@ public class player : MonoBehaviour{
     
     //UI
     public Canvas DeadPlayer;
+    public Canvas EndLevel;
     // Start is called before the first frame update
     void Start(){
         modelchild = this.gameObject.transform.GetChild(0);
@@ -156,6 +157,10 @@ public class player : MonoBehaviour{
         if(other.gameObject.layer == 9){ //if the player hits a coin, give them a double jump
             Destroy(other.gameObject);
             maxJumps += 1;
+        }
+        else if(other.gameObject.tag == "Finish")
+        {
+            EndLevel.enabled = true;
         }
     }
 
