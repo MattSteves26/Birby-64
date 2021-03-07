@@ -17,9 +17,8 @@ public class player : MonoBehaviour{
     [SerializeField] float distToGround;
     [SerializeField] private bool lockZAxis = false;
     // SerializeField allows the varible to be set in Unity. I'm initializing these varibles here, because if they're initialized in start, then the values we set in unity is reset.
-    [SerializeField] private int jumpCount = 1;
-    [SerializeField] private int maxJumps = 6;
-    [SerializeField] private float jumpforce = 1000;
+    [SerializeField] private int jumpLeft;
+    [SerializeField] private float jumpforce;
     [SerializeField] private float gravity = 1750;
     [SerializeField] private float fastFallSpeed = 3;
     [SerializeField] private float jumpGravity = 1000;
@@ -28,7 +27,9 @@ public class player : MonoBehaviour{
     [SerializeField] private float terminal = -10; 
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask;
-    
+    private float StartingJumpForce;
+    private bool isGrounded;
+    const int MAX_JUMPS = 6;
     
     //Jump vars
     public float jumpTimer;
@@ -47,7 +48,9 @@ public class player : MonoBehaviour{
     void Start(){
         modelchild = this.gameObject.transform.GetChild(0);
         rb = GetComponent<Rigidbody>();
-        
+        StartingJumpForce = 25;
+        isGrounded = true;
+        jumpLeft = MAX_JUMPS;
     }
 
     // Update is called once per frame
@@ -55,22 +58,30 @@ public class player : MonoBehaviour{
         float XAxisInput = Input.GetAxis("Horizontal");
         float ZAxisInput = Input.GetAxis("Vertical");
         // Jump and movement update, this makes it so the movement is set to occur at the next physics update, rather than this frame update.
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > jumpTimer && jumpCount < maxJumps){
-            //Factor of weakening jumps
-            float jumpFactor = ((float)maxJumps - (float)jumpCount)/ (float)maxJumps;
-            //jumpFactor = jumpFactor / ((float) jumpCount+ 1);
-            Debug.Log(jumpFactor);
-            rb.AddForce(new Vector3(0,-rb.velocity.y,0));
-            //like jumping off a platform, reset vertical speed
-            rb.AddForce(Vector3.up * jumpforce * jumpFactor);
-            jumpTimer = Time.time + jumpDeltaTime;
-            jumpCount += 1;
-         }
+        /* if (Input.GetKeyDown(KeyCode.Space) && Time.time > jumpTimer && jumpCount < maxJumps){
+             //Factor of weakening jumps
+             float jumpFactor = ((float)maxJumps - (float)jumpCount)/ (float)maxJumps;
+             //jumpFactor = jumpFactor / ((float) jumpCount+ 1);
+             Debug.Log(jumpFactor);
+             rb.AddForce(new Vector3(0,-rb.velocity.y,0));
+             //like jumping off a platform, reset vertical speed
+             rb.AddForce(Vector3.up * jumpforce * jumpFactor);
+             jumpTimer = Time.time + jumpDeltaTime;
+             jumpCount += 1;
+          }*/
 
-   
+        if (Input.GetKeyDown(KeyCode.Space) && jumpLeft > 0)
+        {
+            rb.AddForce(0f,jumpforce,0f,ForceMode.Impulse);
+            jumpLeft--;
+            Debug.Log(jumpLeft); ;
+        }
+
+
+
 
         // Movement
-        if (spline) {
+            if (spline) {
             xdist += XAxisInput * splinespeed;
             
             Vector3 tangent;
@@ -130,11 +141,11 @@ public class player : MonoBehaviour{
         }
         
         //Still not perfect ground detection :/
-        if(Physics.Raycast(groundCheckTransform.position, -Vector3.up, distToGround)) //check if the player is on the ground, so we can control double jumping
-        {
-            jumpCount = 0;
+       // if(Physics.Raycast(groundCheckTransform.position, -Vector3.up, distToGround)) //check if the player is on the ground, so we can control double jumping
+        //{
+            //jumpCount = 0;
             
-        }    
+       // }    
         
         // speed up the fall of the jump to make it not feel as "floaty" (work in progress)
         /*if(rb.velocity.y > -10){
@@ -145,18 +156,21 @@ public class player : MonoBehaviour{
    
     //COLLISION
     private void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.tag == "Enemy"){
+        if (collision.gameObject.tag == "Enemy")
+        {
             Destroy(gameObject);
             DeadPlayer.enabled = true;
-            //Destroy(collision.gameObject); 
-            
+            //Destroy(collision.gameObject);     
+        }
+        else if (collision.gameObject.tag == "Ground")
+        {
+            jumpLeft = MAX_JUMPS;
         }
     }
 
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.layer == 9){ //if the player hits a coin, give them a double jump
             Destroy(other.gameObject);
-            maxJumps += 1;
         }
         else if(other.gameObject.tag == "Finish")
         {
