@@ -10,23 +10,20 @@ public class Enemy : MonoBehaviour
     public float health = 3;
     public float maxHealth = 3;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private int damage = 1;
+    public float moveTimer;
+    [SerializeField] public float moveDeltaTime = 1.5f;
     
-    private bool movingRight = true;
-
     public Transform player;
-    public float range = 50.0f;
+    public float range = 7.0f;
   
-    private bool onRange = false;
+    private bool chasePlayer = false;
+    private bool goingRight;
 
     public float distance;
-
-    private Vector3 pos1 = new Vector3(-4, 0, 0);
-    private Vector3 pos2 = new Vector3(4, 0, 0);
     public float speed = 1.0f;
 
-    public Transform groundDetect;
 
-    private bool isGrounded;
 
     
     // Start is called before the first frame update
@@ -38,34 +35,56 @@ public class Enemy : MonoBehaviour
 
     void Update(){
         healthBar.value = health/maxHealth;
-        
-        transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
+        distance = Vector2.Distance(transform.position, player.position);
+        Debug.Log(distance);
 
-        onRange = Vector3.Distance(transform.position, player.position) < range;
+        if(distance < range)
+        {
+            chasePlayer= true;
+        }
+        else
+        {
+            chasePlayer = false;
+        }
     }
 
    
     // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
-        if(isGrounded)
+        if(chasePlayer && Time.time > moveTimer)
         {
-            rb.AddForce(Vector3.up * 25);
+            if(transform.position.x < player.position.x )
+            {
+                rb.velocity = new Vector3(speed, 0, 0);
+                goingRight = true;
+            }
+            else
+            {
+                rb.velocity = new Vector3(-speed, 0, 0);
+                goingRight = false;
+            }
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer != 8 && collision.gameObject.tag != "Projectile")
-        {
-            isGrounded = true;
+        if(collision.gameObject.tag == "Player"){
+            collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
+            if(goingRight == true)
+            {
+                rb.AddForce(new Vector3(-4,1,0), ForceMode.Impulse);
+                moveTimer = Time.time + moveDeltaTime;
+            }
+            else
+            {
+                rb.AddForce(new Vector3(4,1,0), ForceMode.Impulse);
+                moveTimer = Time.time + moveDeltaTime;
+            }
+
         }
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-        isGrounded = false;
-    }
     public void TakeDamage(int damage){
         health -= damage;
         if(health <= 0){
