@@ -17,9 +17,9 @@ public class playerMovement : MonoBehaviour
     private bool jumpKeyWasPressed = false;
 
     [SerializeField] private bool lockZAxis = false;
-    [SerializeField] private int jumpCount = 0;
+    [SerializeField] private int jumpsLeft = 6;
     [SerializeField] private int maxJumps = 6;
-    [SerializeField] private float jumpForce = 11;
+    [SerializeField] private float jumpForce = 13;
     [SerializeField] private float jumpForceFalling = 20.81f;
     [SerializeField] private float jumpTimer = 0f; 
     [SerializeField] private float jumpDeltaTime = 0.3f; 
@@ -81,29 +81,30 @@ public class playerMovement : MonoBehaviour
         if(Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0) //check if the player is on the ground, so we can control double jumping
         {
             Debug.Log("NotGrounded");
-            if(jumpCount >= maxJumps)
+            if(jumpsLeft <= 0)
             {
                 return;
             }
                         
         }
         else if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length != 0){
-            jumpCount = 0;
-            jumpForce = 11;
+            jumpsLeft = maxJumps;
+            //jumpForce = 11;
             jumpForceFalling = 20.81f;
         }
 
         if(jumpKeyWasPressed){
+            float jumpFactor = ((float)jumpsLeft/(float)maxJumps);
             if(rb.velocity.y < 0){
                 jumpForceFalling = jumpForce - (rb.velocity.y);
-                rb.AddForce(Vector3.up * jumpForceFalling, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForceFalling * jumpFactor, ForceMode.Impulse);
             }
             else if(rb.velocity.y >= 0){
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce * jumpFactor, ForceMode.Impulse);
             }
             jumpKeyWasPressed = false;
-            jumpCount += 1;
-            jumpForce -= 1;
+            jumpsLeft -= 1;
+            //jumpForce -= 1;
         }
     }
 }
