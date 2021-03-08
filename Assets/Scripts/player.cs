@@ -18,7 +18,7 @@ public class player : MonoBehaviour{
     [SerializeField] private bool lockZAxis = false;
     // SerializeField allows the varible to be set in Unity. I'm initializing these varibles here, because if they're initialized in start, then the values we set in unity is reset.
     [SerializeField] private int jumpLeft;
-    [SerializeField] private float jumpforce;
+    [SerializeField] private float jumpforce = 12f;
     [SerializeField] private float gravity = 1750;
     [SerializeField] private float fastFallSpeed = 3;
     [SerializeField] private float jumpGravity = 1000;
@@ -72,7 +72,9 @@ public class player : MonoBehaviour{
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpLeft > 0)
         {
-            rb.AddForce(0f,jumpforce,0f,ForceMode.Impulse);
+            float jumpFactor = ((float)jumpLeft/(float)MAX_JUMPS);
+            //rb.AddForce(0f,jumpforce * jumpFactor,0f,ForceMode.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpforce * jumpFactor);
             jumpLeft--;
             Debug.Log(jumpLeft); ;
         }
