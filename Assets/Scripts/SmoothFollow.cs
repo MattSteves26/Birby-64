@@ -12,13 +12,16 @@ public class SmoothFollow : MonoBehaviour
 	// The distance in the x-z plane to the target
 	public float distance = 10.0f;
 	// the height we want the camera to be above the target
-	public float height = 5.0f;
+	public float height = 4.0f;
 	// How much we 
-	public float heightDamping = 2.0f;
-	public float rotationDamping = 3.0f;
+	public float heightDamping = 1.0f;
+	public float rotationDamping = 1.0f;
     
-    public float maxHeight = 5.0f;
+    public float maxHeight = 7.0f;
     public float minHeight = 0.0f;
+	[SerializeField] bool smoothLookAtTarget = true;
+	[SerializeField] bool cameraChecksIsGrounded  = true;
+	
 
 	// Place the script in the Camera-Control group in the component menu
 	[AddComponentMenu("Camera-Control/Smooth Follow")]
@@ -39,8 +42,19 @@ public class SmoothFollow : MonoBehaviour
 		currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
 
 		// Damp the height
-		currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
-        
+		//I changed this so it only moves the camera height when the player is on the ground
+		//if you don't want this, just turn off camerChecksIsGrounded and set heightDamping to 100
+		if(cameraChecksIsGrounded){
+			if(target.GetComponent<playerMovement>().isGrounded){
+				currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+			}
+		}
+		else{
+			currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+		}
+		
+		
+		
         // Clamp height to specifications
         currentHeight = Mathf.Clamp(currentHeight, minHeight, maxHeight);
 
@@ -52,10 +66,29 @@ public class SmoothFollow : MonoBehaviour
 		transform.position = target.position;
 		transform.position -= currentRotation * Vector3.forward * distance;
 
+		//Smooth Look At Target (Camera angle)
+		//This rotates the camera with a set speed to look at the player when their up high or falling.
+		//It rotates the camera back to zero at a set speed when the player is low
+		//just turn off smoothLookAtTarget if you don't want to use this ~Dévon
+		if(smoothLookAtTarget){
+			if(wantedHeight >= maxHeight || target.gameObject.GetComponent<Rigidbody>().velocity.y < -10){
+				Vector3 relativePos = new Vector3(target.position.x, currentHeight, target.position.z) - transform.position;
+				Quaternion wantedRotationAngleX = Quaternion.LookRotation(relativePos);
+				wantedRotationAngleX = new Quaternion(wantedRotationAngleX.x * -100.0f,wantedRotationAngleX.y,wantedRotationAngleX.z,wantedRotationAngleX.w);
+				float currentRotationAngleX = transform.eulerAngles.x;
+				currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, wantedRotationAngleX.x, rotationDamping * Time.deltaTime);
+				Quaternion currentRotationX = Quaternion.Euler(currentRotationAngleX, 0, 0);
+				transform.rotation = currentRotationX;			
+			}
+			else{
+				float currentRotationAngleX = transform.eulerAngles.x;
+				currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, 0, rotationDamping * Time.deltaTime);
+				Quaternion currentRotationX = Quaternion.Euler(currentRotationAngleX, 0, 0);
+				transform.rotation = currentRotationX;	
+			}
+		}
 		// Set the height of the camera
 		transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
 
-		// Always look at the target
-		//transform.LookAt(target);
 	}
 }

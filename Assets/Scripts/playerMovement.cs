@@ -10,6 +10,7 @@ public class playerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public Transform modelChild;
+    public  bool isGrounded;
     private float XAxisInput;
     private float ZAxisInput;
     private float leftAngle = 110;
@@ -80,7 +81,6 @@ public class playerMovement : MonoBehaviour
 
         if(Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0) //check if the player is on the ground, so we can control double jumping
         {
-            Debug.Log("NotGrounded");
             if(jumpsLeft <= 0)
             {
                 return;
@@ -91,6 +91,7 @@ public class playerMovement : MonoBehaviour
             jumpsLeft = maxJumps;
             //jumpForce = 11;
             jumpForceFalling = 20.81f;
+            isGrounded = true;
         }
 
         if(jumpKeyWasPressed){
@@ -104,6 +105,7 @@ public class playerMovement : MonoBehaviour
             }
             jumpKeyWasPressed = false;
             jumpsLeft -= 1;
+            isGrounded = false;
             //jumpForce -= 1;
         }
     }
