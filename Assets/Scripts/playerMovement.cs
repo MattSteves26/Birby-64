@@ -11,6 +11,13 @@ public class playerMovement : MonoBehaviour
     public Rigidbody rb;
     public Transform modelChild;
     public  bool isGrounded;
+    public bool speedBoost= false;
+    public int jumpsLeft = 6;
+    public int maxJumps = 6;
+    public float speedTimer = 0f; 
+    public float moveSpeed = 300f; 
+
+    private float xdist = 0;
     private float XAxisInput;
     private float ZAxisInput;
     private float leftAngle = 110;
@@ -18,18 +25,12 @@ public class playerMovement : MonoBehaviour
     private bool jumpKeyWasPressed = false;
 
     [SerializeField] private bool lockZAxis = false;
-    [SerializeField] private int jumpsLeft = 6;
-    [SerializeField] private int maxJumps = 6;
     [SerializeField] private float jumpForce = 13;
-    [SerializeField] private float jumpForceFalling = 20.81f;
     [SerializeField] private float jumpTimer = 0f; 
-    [SerializeField] private float jumpDeltaTime = 0.3f; 
-    [SerializeField] private float movespeed = 300f; 
+    [SerializeField] private float jumpDeltaTime = 0.3f;    
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask;
-
     [SerializeField] BGCcMath spline;
-    private float xdist = 0;
     [SerializeField] private float splinespeed = 0.1f;
 
     void start()
@@ -71,12 +72,17 @@ public class playerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        //Reset Player Speed
+        if(speedBoost && Time.time > speedTimer){
+            moveSpeed *= (float)(1.0/3.0);
+            speedBoost = false;
+        }
         //not spline mmovement
         if (!spline && lockZAxis){
-            rb.velocity = new Vector3(XAxisInput * movespeed * Time.deltaTime, rb.velocity.y, 0);
+            rb.velocity = new Vector3(XAxisInput * moveSpeed * Time.deltaTime, rb.velocity.y, 0);
         }
         else if (!spline &&!lockZAxis){
-            rb.velocity = new Vector3(XAxisInput * movespeed * Time.deltaTime, rb.velocity.y, ZAxisInput * movespeed * Time.deltaTime);
+            rb.velocity = new Vector3(XAxisInput * moveSpeed * Time.deltaTime, rb.velocity.y, ZAxisInput * moveSpeed * Time.deltaTime);
         }
 
         if(Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0) //check if the player is on the ground, so we can control double jumping
@@ -89,24 +95,16 @@ public class playerMovement : MonoBehaviour
         }
         else if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length != 0){
             jumpsLeft = maxJumps;
-            //jumpForce = 11;
-            jumpForceFalling = 20.81f;
             isGrounded = true;
         }
 
         if(jumpKeyWasPressed){
             float jumpFactor = ((float)jumpsLeft/(float)maxJumps);
-            if(rb.velocity.y < 0){
-                jumpForceFalling = jumpForce - (rb.velocity.y);
-                rb.AddForce(Vector3.up * jumpForceFalling * jumpFactor, ForceMode.Impulse);
-            }
-            else if(rb.velocity.y >= 0){
-                rb.AddForce(Vector3.up * jumpForce * jumpFactor, ForceMode.Impulse);
-            }
+            rb.velocity = Vector3.zero;
+            rb.AddForce(Vector3.up * jumpForce * jumpFactor, ForceMode.Impulse);
             jumpKeyWasPressed = false;
             jumpsLeft -= 1;
             isGrounded = false;
-            //jumpForce -= 1;
         }
     }
 }
