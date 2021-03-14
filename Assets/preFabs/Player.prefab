@@ -467,12 +467,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5536097320165785199}
-  distance: 10
+  distance: 15
   height: 0
   heightDamping: 100
   rotationDamping: 3
   maxHeight: 5
   minHeight: 0
+  smoothLookAtTarget: 1
+  cameraChecksIsGrounded: 1
 --- !u!1 &3958168293025010979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,14 +2345,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6917132658517241050}
   modelChild: {fileID: 4486119506352591429}
-  lockZAxis: 1
+  isGrounded: 0
+  speedBoost: 0
   jumpsLeft: 6
   maxJumps: 6
-  jumpForce: 13
-  jumpForceFalling: 20.81
+  speedTimer: 0
+  moveSpeed: 300
+  lockZAxis: 1
+  jumpForce: 22
   jumpTimer: 0
   jumpDeltaTime: 0.3
-  movespeed: 300
   groundCheckTransform: {fileID: 3273285973880470872}
   playerMask:
     serializedVersion: 2
@@ -2371,3 +2375,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EndLevel: {fileID: 0}
   healthBoost: 1
+  speedDeltaTime: 4
