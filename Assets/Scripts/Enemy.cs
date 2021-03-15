@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    
+
     private Rigidbody rb;
     public float health = 3;
     public float maxHealth = 3;
@@ -13,10 +13,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int damage = 1;
     public float moveTimer;
     [SerializeField] public float moveDeltaTime = 1.5f;
-    
+
     public Transform player;
     public float range = 7.0f;
-  
+
     private bool chasePlayer = false;
     private bool goingRight;
 
@@ -25,22 +25,23 @@ public class Enemy : MonoBehaviour
 
 
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        healthBar.value = health/maxHealth;
+        healthBar.value = health / maxHealth;
     }
 
-    void Update(){
-        healthBar.value = health/maxHealth;
+    void Update()
+    {
+        healthBar.value = health / maxHealth;
         distance = Vector2.Distance(transform.position, player.position);
         Debug.Log(distance);
 
-        if(distance < range)
+        if (distance < range)
         {
-            chasePlayer= true;
+            chasePlayer = true;
         }
         else
         {
@@ -48,13 +49,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-   
+
     // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
-        if(chasePlayer && Time.time > moveTimer)
+        if (chasePlayer && Time.time > moveTimer)
         {
-            if(transform.position.x < player.position.x )
+            if (transform.position.x < player.position.x)
             {
                 rb.velocity = new Vector3(speed, 0, 0);
                 goingRight = true;
@@ -69,25 +70,28 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player"){
+        if (collision.gameObject.tag == "Player")
+        {
             collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
-            if(goingRight == true)
+            if (goingRight == true)
             {
-                rb.AddForce(new Vector3(-4,1,0), ForceMode.Impulse);
+                rb.AddForce(new Vector3(-4, 1, 0), ForceMode.Impulse);
                 moveTimer = Time.time + moveDeltaTime;
             }
             else
             {
-                rb.AddForce(new Vector3(4,1,0), ForceMode.Impulse);
+                rb.AddForce(new Vector3(4, 1, 0), ForceMode.Impulse);
                 moveTimer = Time.time + moveDeltaTime;
             }
 
         }
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage)
+    {
         health -= damage;
-        if(health <= 0){
+        if (health <= 0)
+        {
             Destroy(gameObject);
         }
     }
