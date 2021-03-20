@@ -20,8 +20,8 @@ public class playerMovement : MonoBehaviour
     private float xdist = 0;
     private float XAxisInput;
     private float ZAxisInput;
-    private float leftAngle = 110;
-    private float rightAngle = -110;
+    private float leftAngle = 230;
+    private float rightAngle = -40;
     private bool jumpKeyWasPressed = false;
 
     [SerializeField] private bool lockZAxis = false;
