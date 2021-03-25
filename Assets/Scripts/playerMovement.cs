@@ -3,35 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using BansheeGz.BGSpline.Components;
-
+//using BansheeGz.BGSpline.Components;
+using PathCreation;
 
 public class playerMovement : MonoBehaviour
 {
-    public Rigidbody rb;
-    public Transform modelChild;
-    public  bool isGrounded;
+    public bool isGrounded;
     public bool speedBoost= false;
+
     public int jumpsLeft = 6;
     public int maxJumps = 6;
-    public float speedTimer = 0f; 
-    public float moveSpeed = 300f; 
 
-    private float xdist = 0;
+    public float moveSpeed = 300f;
+    public float speedTimer = 0f;  
+
+    private bool jumpKeyWasPressed = false;
+   
+    private float tDist = 0; // for spline movement
     private float XAxisInput;
     private float ZAxisInput;
     private float leftAngle = 230;
     private float rightAngle = -40;
-    private bool jumpKeyWasPressed = false;
 
     [SerializeField] private bool lockZAxis = false;
+    [SerializeField] private bool isSpline;
+
     [SerializeField] private float jumpForce = 13;
     [SerializeField] private float jumpTimer = 0f; 
     [SerializeField] private float jumpDeltaTime = 0.3f;    
+    
+    [SerializeField] private float splinespeed = 2f;
+
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Transform modelChild;
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask;
-    [SerializeField] BGCcMath spline;
-    [SerializeField] private float splinespeed = 0.1f;
+    [SerializeField] private PathCreator pc;
 
     void start()
     {
@@ -50,38 +57,46 @@ public class playerMovement : MonoBehaviour
             jumpTimer = Time.time + jumpDeltaTime;
             
         }
-        
-        //spline movement
-        if (spline) {
-            xdist += XAxisInput * splinespeed;
-            Vector3 tangent;
-            Vector3 newpos = spline.CalcPositionAndTangentByDistance(xdist, out tangent);
-            transform.position = new Vector3(newpos.x, transform.position.y, newpos.z);
-            transform.rotation = Quaternion.LookRotation(tangent);   
-        }
 
         // Change rotation
-        if (XAxisInput > 0) {
+        if (XAxisInput > 0 && !isSpline) {
             modelChild.localRotation = Quaternion.Euler(0,leftAngle,0);
         }
-        else if (XAxisInput < 0) {
+        else if (XAxisInput < 0 && !isSpline) {
             modelChild.localRotation = Quaternion.Euler(0,rightAngle,0);
+        }
+        else if (XAxisInput > 0) {
+            modelChild.localRotation = Quaternion.Euler(0,0, 0);
+        }
+        else if (XAxisInput < 0) {
+            modelChild.localRotation = Quaternion.Euler(0,180, 0);
         }
         
     }
 
     void FixedUpdate()
     {
-        //Reset Player Speed
+        //Reset Player Speed after speed boost
         if(speedBoost && Time.time > speedTimer){
             moveSpeed *= (float)(1.0/3.0);
             speedBoost = false;
         }
+
+        //spline movement
+        if(isSpline){
+            tDist = pc.path.GetClosestDistanceAlongPath(transform.position);
+            tDist += XAxisInput * splinespeed * Time.deltaTime;
+            Vector3 newpos = pc.path.GetPointAtDistance(tDist);
+            newpos.y = transform.position.y;
+            transform.rotation = pc.path.GetRotationAtDistance(tDist);
+            rb.MovePosition(newpos);    
+        }
+
         //not spline mmovement
-        if (!spline && lockZAxis){
+        if (!isSpline && lockZAxis){
             rb.velocity = new Vector3(XAxisInput * moveSpeed * Time.deltaTime, rb.velocity.y, 0);
         }
-        else if (!spline &&!lockZAxis){
+        else if (!isSpline &&!lockZAxis){
             rb.velocity = new Vector3(XAxisInput * moveSpeed * Time.deltaTime, rb.velocity.y, ZAxisInput * moveSpeed * Time.deltaTime);
         }
 
@@ -106,5 +121,8 @@ public class playerMovement : MonoBehaviour
             jumpsLeft -= 1;
             isGrounded = false;
         }
+    }
+    public bool V3Equal(Vector3 a, Vector3 b){
+        return Vector3.SqrMagnitude(a - b) < 0.0001;
     }
 }
