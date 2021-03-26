@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   maxHealth: 3
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 6797600897541604024}
   damage: 1
   moveTimer: 0
   moveDeltaTime: 1.5
