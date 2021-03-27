@@ -16,7 +16,7 @@ public class playerMovement : MonoBehaviour
     public int maxJumps = 6;
     public float speedTimer = 0f; 
     public float moveSpeed = 300f; 
-
+    
     private float xdist = 0;
     private float XAxisInput;
     private float ZAxisInput;
@@ -33,9 +33,12 @@ public class playerMovement : MonoBehaviour
     [SerializeField] BGCcMath spline;
     [SerializeField] private float splinespeed = 0.1f;
 
+    public Animation anim;
+
     void start()
     {
         modelChild = this.gameObject.transform.GetChild(0);
+
         rb = GetComponent<Rigidbody>();       
     }
 
@@ -60,12 +63,18 @@ public class playerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(tangent);   
         }
 
-        // Change rotation
+        // Change rotation and do animation
         if (XAxisInput > 0) {
+            //Would change to walking animation here, not ready yet, so just marking it here
+            anim.Play();
             modelChild.localRotation = Quaternion.Euler(0,leftAngle,0);
         }
         else if (XAxisInput < 0) {
+            anim.Play();
             modelChild.localRotation = Quaternion.Euler(0,rightAngle,0);
+        }
+        else {
+            anim.Stop(); //Currently stops at random point, change to idle animation once that is ready
         }
         
     }
