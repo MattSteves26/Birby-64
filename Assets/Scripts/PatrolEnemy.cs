@@ -1,4 +1,7 @@
-﻿using System.Collections;
+//you can use the speed to change how fast you go 
+//In the pos1 and pos2, you declare where the enemy starts and where the enemy ends, you can't drag and drop
+//You can change these in the Unity editor on the right
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
