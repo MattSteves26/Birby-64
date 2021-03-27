@@ -1,5 +1,6 @@
 //This is the Script for the Patrol and Tracking Enemy
-
+//Like the basic Enemy, you can use the range and speed to change how far away the player can be detected and how fast you go 
+//In the pos1 and pos2, you declare where the enemy starts and where the enemy ends, you can't drag and drop
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
