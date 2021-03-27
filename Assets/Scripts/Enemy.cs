@@ -1,3 +1,5 @@
+//This enemy will just be placed into the scene, once in the scene, you can change the range it can detect the player and the speed
+//Increasing the speed float can allow for the speed to be quicker or slower, and the range float can be changed for the player to be detected. 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
