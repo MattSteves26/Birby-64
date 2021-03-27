@@ -62,13 +62,13 @@ public class playerMovement : MonoBehaviour
         }
 
         // Change rotation and do animation
-        if (XAxisInput > 0) {
+        if (XAxisInput > 0 && !isSpline) {
             //Would change to walking animation here, not ready yet, so just marking it here
             anim.Play();
             modelChild.localRotation = Quaternion.Euler(0,leftAngle,0);
         }
+        else if (XAxisInput < 0 && !isSpline) {
             anim.Play();
-        else if (XAxisInput < 0) {
             modelChild.localRotation = Quaternion.Euler(0,rightAngle,0);
         }
         else if (XAxisInput > 0) {
