@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public Canvas PauseMenuUI;
+    public Canvas OptionsMenuUI;
 
     // Update is called once per frame
     void Update()
@@ -30,7 +31,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         PauseMenuUI.enabled = false;
-        Time.timeScale = 1f;
+        Time.timeScale = 2f;
         GameIsPaused = false;
     }
 
@@ -55,5 +56,17 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.enabled = false;
         Time.timeScale = 1f;
         GameIsPaused = false;
+    }
+
+    public void OptionsMenu()
+    {
+        PauseMenuUI.enabled = false;
+        OptionsMenuUI.enabled = true;
+    }
+
+    public void backOptions()
+    {
+        PauseMenuUI.enabled = true;
+        OptionsMenuUI.enabled = false;
     }
 }

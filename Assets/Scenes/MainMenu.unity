@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5c9e1bf9fd6810a45b44b6fd4e0ad77c, type: 2}
+  slider: {fileID: 1729035832}
   resolutionsDropdown: {fileID: 746603778}
 --- !u!1001 &52671025
 PrefabInstance:

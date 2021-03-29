@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+
 public class SettingsMenu : MonoBehaviour
 {
+    public static float volumebar;
+
     public AudioMixer audioMixer;
+    public Slider slider;
 
     public TMPro.TMP_Dropdown resolutionsDropdown;
 
@@ -36,6 +40,8 @@ public class SettingsMenu : MonoBehaviour
         resolutionsDropdown.AddOptions(options);
         resolutionsDropdown.value = currentResolutionsIndex;
         resolutionsDropdown.RefreshShownValue();
+
+        slider.value = volumebar;
     }
 
     public void SetResolution(int resolutionIndex)
@@ -47,6 +53,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        volumebar = volume;
     }
 
     public void SetQuality(int qualityIndex)
