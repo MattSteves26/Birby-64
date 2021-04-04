@@ -2,6 +2,8 @@
 //This Can go in a circle and keeps going in a circle
 //This goes in a circle, but how it gets placed in the scene stills needs to be tested more
 //Prototype at the moment
+//The way to set this up is to change the y in the unity editor, once that happens, set the width and height to 20
+//You cab change the width and height to change how wide the circle you create it
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,15 +23,16 @@ public class CirclePatrolEnemy : MonoBehaviour
     public float width;
     public float height;
 
+    public float x;
+    public float y;
+    public float z;
+
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2;
-        width = 30;
-        height = 20;
-
         rb = GetComponent<Rigidbody>();
         healthBar.value = health / maxHealth;
+        transform.position = new Vector3(x, y, z);
     }
 
     // Update is called once per frame
@@ -37,9 +40,9 @@ public class CirclePatrolEnemy : MonoBehaviour
     {
         timeCounter += Time.deltaTime;
 
-        float x = Mathf.Cos(timeCounter) * width;
-        float y = 0;
-        float z = Mathf.Sin(timeCounter) * height;
+        x = Mathf.Cos(timeCounter) * width;
+        
+        z = Mathf.Sin(timeCounter) * height;
 
         transform.position = new Vector3(x, y, z);
     }
