@@ -22,7 +22,7 @@ public class playerMovement : MonoBehaviour
     private float tDist = 0; // for spline movement
     private float XAxisInput;
     private float ZAxisInput;
-    private float leftAngle = 230;
+    private float leftAngle = 220;
     private float rightAngle = -40;
 
     [SerializeField] private bool lockZAxis = false;
@@ -33,6 +33,8 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float jumpDeltaTime = 0.3f;    
     
     [SerializeField] private float splinespeed = 2f;
+    public float splineLeftAngle = -60;
+    public float splineRightAngle = 230;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform modelChild;
@@ -40,13 +42,12 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private PathCreator pc;
 
-    public Animation anim;
+    public Animator anim;
+ 
 
     void start()
     {
         modelChild = this.gameObject.transform.GetChild(0);
-
-        rb = GetComponent<Rigidbody>();       
     }
 
     void Update()
@@ -54,35 +55,32 @@ public class playerMovement : MonoBehaviour
         XAxisInput = Input.GetAxis("Horizontal");
         ZAxisInput = Input.GetAxis("Vertical");
         
+        anim.SetFloat("Xinput", Mathf.Abs(XAxisInput));
+        
         //jump
         if(Input.GetKeyDown(KeyCode.Space) && Time.time > jumpTimer){
             jumpKeyWasPressed = true;
             jumpTimer = Time.time + jumpDeltaTime;
-            
+            anim.SetBool("Jumped", true);
+        }
+        else {
+            anim.SetBool("Jumped", false);
         }
 
-        // Change rotation and do animation
+        // Change rotation
         if (XAxisInput > 0 && !isSpline) {
-            //Would change to walking animation here, not ready yet, so just marking it here
-            anim.Play();
             modelChild.localRotation = Quaternion.Euler(0,leftAngle,0);
         }
         else if (XAxisInput < 0 && !isSpline) {
-            anim.Play();
             modelChild.localRotation = Quaternion.Euler(0,rightAngle,0);
         }
         else if (XAxisInput > 0) {
-            anim.Play();
-            modelChild.localRotation = Quaternion.Euler(0,90, 0);
+            modelChild.localRotation = Quaternion.Euler(0,splineLeftAngle, 0);
         }
         else if (XAxisInput < 0) {
-            anim.Play();
-            modelChild.localRotation = Quaternion.Euler(0,-90, 0);
+           modelChild.localRotation = Quaternion.Euler(0,splineRightAngle, 0);
         }
-        else {
-            anim.Stop(); //Currently stops at random point, change to idle animation once that is ready
-        }
-        
+
     }
 
     void FixedUpdate()
@@ -118,12 +116,14 @@ public class playerMovement : MonoBehaviour
             if(jumpsLeft <= 0)
             {
                 return;
+                anim.SetBool("Ground", false);
             }
                         
         }
         else if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length != 0){
             jumpsLeft = maxJumps;
             isGrounded = true;
+            anim.SetBool("Ground", true);
         }
 
         if(jumpKeyWasPressed){
@@ -133,6 +133,7 @@ public class playerMovement : MonoBehaviour
             jumpKeyWasPressed = false;
             jumpsLeft -= 1;
             isGrounded = false;
+            anim.SetBool("Ground", false);
         }
     }
     public bool V3Equal(Vector3 a, Vector3 b){
