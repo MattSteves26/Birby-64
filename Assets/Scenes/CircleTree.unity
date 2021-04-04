@@ -4218,6 +4218,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &294121889 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1494486397056179419, guid: 227f842e170388847ad056e2e259c240,
+    type: 3}
+  m_PrefabInstance: {fileID: 6561365261236102124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &294473410
 GameObject:
   m_ObjectHideFlags: 0
