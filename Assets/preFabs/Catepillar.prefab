@@ -605,9 +605,9 @@ MonoBehaviour:
   moveTimer: 0
   moveDeltaTime: 1.5
   player: {fileID: 0}
-  range: 7
+  range: 12
   distance: 0
-  speed: 1
+  speed: 3
 --- !u!1 &7127030575550134395
 GameObject:
   m_ObjectHideFlags: 0
