@@ -4504,7 +4504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353385530
 GameObject:
@@ -4583,7 +4583,7 @@ Transform:
   - {fileID: 2117471541}
   - {fileID: 513501406}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &374894227
 GameObject:
@@ -57364,6 +57364,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262058337072831458, guid: 227f842e170388847ad056e2e259c240,
+        type: 3}
+      propertyPath: height
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262058337072831458, guid: 227f842e170388847ad056e2e259c240,
+        type: 3}
+      propertyPath: distance
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262058337072831458, guid: 227f842e170388847ad056e2e259c240,
+        type: 3}
+      propertyPath: maxHeight
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227f842e170388847ad056e2e259c240, type: 3}
