@@ -57558,6 +57558,16 @@ PrefabInstance:
       propertyPath: maxHeight
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8262058337151243554, guid: 227f842e170388847ad056e2e259c240,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262058337151243554, guid: 227f842e170388847ad056e2e259c240,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8262058339064875622, guid: 227f842e170388847ad056e2e259c240,
         type: 3}
       propertyPath: splineLeftAngle
