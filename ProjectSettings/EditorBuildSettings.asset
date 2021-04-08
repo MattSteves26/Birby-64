@@ -8,10 +8,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 54b1fc9d81dc1854790dad11e9668a9e
-  - enabled: 0
-    path: Assets/Scenes/TestBed.unity
-    guid: 0309553828f52c84a80161991af473de
   - enabled: 1
     path: Assets/Scenes/Greener.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Pipeland.unity
+    guid: 92c6c225d49a71f4683a65938b7a2919
+  - enabled: 1
+    path: Assets/Scenes/Thorns.unity
+    guid: ab185558a519c3749bb98fac9831f416
+  - enabled: 1
+    path: Assets/Scenes/FlappyBird.unity
+    guid: dabbe7dd3011d4344b9bfd49509ac4d5
+  - enabled: 1
+    path: Assets/Scenes/CircleTree.unity
+    guid: 335873648a43bc047b79ce5e187e8d53
+  - enabled: 1
+    path: Assets/Scenes/Mole.unity
+    guid: efa1e4ac70d84024f9778a72fd5f6d1e
+  - enabled: 0
+    path: Assets/Scenes/TestBed.unity
+    guid: 0309553828f52c84a80161991af473de
   m_configObjects: {}
