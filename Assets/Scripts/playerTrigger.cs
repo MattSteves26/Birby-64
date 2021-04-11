@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class playerTrigger : MonoBehaviour
 {
     public Canvas EndLevel;
     [SerializeField] private int healthBoost = 1;
+    [SerializeField] private int damage = 1;
     [SerializeField] private float speedDeltaTime = 4; 
+    [SerializeField] Text scoreText;
+    [SerializeField] Text deadScoreText;
+    int score;
 
 
 
-    
+    public void Start(){
+        score = 0;
+        scoreText.text = "Score: " + score;
+    }
     public void OnTriggerEnter(Collider other){
         
         string oTag = other.gameObject.tag;
@@ -31,7 +40,12 @@ public class playerTrigger : MonoBehaviour
                 GetComponent<playerMovement>().speedTimer = Time.time + speedDeltaTime;
                 GetComponent<playerMovement>().speedBoost = true;
                 break;
-
+            case "ScoreZone":
+                Destroy(other.gameObject);
+                score++;
+                scoreText.text = "Score: " + score;
+                deadScoreText.text = "Score: " + score;
+                break;
             case "Finish":
                 EndLevel.enabled = true;
                 break;
@@ -48,5 +62,17 @@ public class playerTrigger : MonoBehaviour
         {
             EndLevel.enabled = true;
         }*/
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        int cLayer = collision.gameObject.layer;
+         switch(cLayer)
+         {
+            case 9: // thorns layer
+                GetComponent<playerHealth>().TakeDamage(damage);
+                break;
+            default:
+                break;
+         }
     }
 }
