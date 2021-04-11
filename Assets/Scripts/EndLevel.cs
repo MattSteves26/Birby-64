@@ -23,6 +23,7 @@ public class EndLevel : MonoBehaviour
     public void NextLevel()
     {
         Debug.Log("NEXT LEVEL");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
