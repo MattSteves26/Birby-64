@@ -1,20 +1,8 @@
 fileFormatVersion: 2
-guid: 0183d483da325864a87e5fa9044f23c7
+guid: 1ba098db678b81c4fac1efdb4890cebc
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable:
-  - first:
-      74: -2552546163807241679
-    second: Armature|Blink
-  - first:
-      74: -3878354438336533497
-    second: Armature|EarIdle
-  - first:
-      74: 5754330143168782828
-    second: Armature|Sleep
-  - first:
-      74: 8349542763059015795
-    second: Armature|Walk
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 1
