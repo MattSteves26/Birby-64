@@ -22,8 +22,8 @@ public class playerMovement : MonoBehaviour
     private float tDist = 0; // for spline movement
     private float XAxisInput;
     private float ZAxisInput;
-    private float leftAngle = 220;
-    private float rightAngle = -40;
+    private float leftAngle = -40;
+    private float rightAngle = 40;
 
     [SerializeField] private bool lockZAxis = false;
     [SerializeField] private bool isSpline;
@@ -69,10 +69,13 @@ public class playerMovement : MonoBehaviour
 
         // Change rotation
         if (XAxisInput > 0 && !isSpline) {
-            modelChild.localRotation = Quaternion.Euler(0,leftAngle,0);
+            modelChild.localRotation = Quaternion.Euler(0,rightAngle,0);
+            transform.localRotation = Quaternion.Euler(0,180,0);
         }
         else if (XAxisInput < 0 && !isSpline) {
-            modelChild.localRotation = Quaternion.Euler(0,rightAngle,0);
+            modelChild.localRotation = Quaternion.Euler(0,leftAngle,0);
+            transform.localRotation = Quaternion.Euler(0,0,0);
+
         }
         else if (XAxisInput > 0) {
             modelChild.localRotation = Quaternion.Euler(0,splineLeftAngle, 0);
