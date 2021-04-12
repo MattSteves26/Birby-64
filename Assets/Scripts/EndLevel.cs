@@ -7,13 +7,7 @@ public class EndLevel : MonoBehaviour
 {
     public Canvas EndLevelUI;
 
-    public void onRestart()
-    {
-        //Reset Everything back to the start
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        EndLevelUI.enabled = false;
-    }
-
+   
     public void onQuit()
     {
         //go back to menu
