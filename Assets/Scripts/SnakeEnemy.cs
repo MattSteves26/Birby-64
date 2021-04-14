@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+this code works very similarly to how the catepiller enemy
+you can change the speed with the speed float
+you also need to set the tracking of the enemy
+set the player variable to the Player prefab to start the tracking
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +25,7 @@ public class SnakeEnemy : MonoBehaviour
     public float range = 7.0f;
 
     private bool chasePlayer = false;
-    private bool goingRight;
+    
 
     public float distance;
     public float speed = 1.0f;
@@ -87,17 +94,11 @@ public class SnakeEnemy : MonoBehaviour
 
         if (chasePlayer && Time.time > moveTimer && jumpAttack == 0)
         {
-            if (transform.position.x < player.position.x)
-            {
-                rb.AddForce(jumping * jumpForceAttack, ForceMode.Impulse);
-                rb.velocity = new Vector3(speed, 0, 0);
-                goingRight = true;
-            }
-            else
+           
             {
                 rb.AddForce(jumping * jumpForceAttack, ForceMode.Impulse);
                 rb.velocity = new Vector3(-speed, 0, 0);
-                goingRight = false;
+                
             }
 
             jumpAttack = 1;
@@ -106,15 +107,10 @@ public class SnakeEnemy : MonoBehaviour
 
         if (chasePlayer && Time.time > moveTimer && jumpAttack == 1)
         {
-            if (transform.position.x < player.position.x)
-            {
-                rb.velocity = new Vector3(speed, 0, 0);
-                goingRight = true;
-            }
-            else
+           
             {
                 rb.velocity = new Vector3(-speed, 0, 0);
-                goingRight = false;
+                
             }
         }
     }
@@ -124,17 +120,10 @@ public class SnakeEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
-            if (goingRight == true)
-            {
-                rb.AddForce(new Vector3(-4, 1, 0), ForceMode.Impulse);
-                moveTimer = Time.time + moveDeltaTime;
-            }
-            else
-            {
-                rb.AddForce(new Vector3(4, 1, 0), ForceMode.Impulse);
-                moveTimer = Time.time + moveDeltaTime;
-            }
-
+         
+            rb.AddForce(new Vector3(4, 1, 0), ForceMode.Impulse);
+            moveTimer = Time.time + moveDeltaTime;
+    
         }
     }
 
