@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/FlyEnemy.cs.meta
 guid: 92923773e283dc0458c0c12136c3a0d7
 MonoImporter:
+=======
+guid: 36952078511f3b4409df4edab7ccbf53
+folderAsset: yes
+DefaultImporter:
+>>>>>>> CoinsAndPipeland:Assets/Toon Nature/Models/Plant 1.fbm.meta
   externalObjects: {}
   serializedVersion: 2
   defaultReferences: []

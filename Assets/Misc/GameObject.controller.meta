@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Misc/GameObject.controller.meta
 guid: 3006f739c7b69b142896dfb52d28f1a3
 NativeFormatImporter:
+=======
+guid: 87944fa96398eef40909b2197390a377
+folderAsset: yes
+DefaultImporter:
+>>>>>>> CoinsAndPipeland:Assets/Toon Nature/Models/Grass 2.fbm.meta
   externalObjects: {}
   mainObjectFileID: 9100000
   userData: 

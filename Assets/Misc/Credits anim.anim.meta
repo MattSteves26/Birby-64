@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Misc/Credits anim.anim.meta
 guid: ee9ce85605c631449a33758c33096841
 NativeFormatImporter:
+=======
+guid: 94a9822302f8d944bb7d93c04300a4e8
+folderAsset: yes
+DefaultImporter:
+>>>>>>> CoinsAndPipeland:Assets/Toon Nature/Models/Grass 1.fbm.meta
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 
