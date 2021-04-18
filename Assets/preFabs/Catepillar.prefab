@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 7127030575398826643}
   - component: {fileID: 7127030575398826642}
   - component: {fileID: 7127030575398826641}
+  - component: {fileID: 6572232418241246802}
   m_Layer: 0
   m_Name: Catepillar
   m_TagString: Enemy
@@ -324,9 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30056ef3516bab24899fec9ddbc542a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 3
-  healthBar: {fileID: 7127030575314587089}
   damage: 1
   moveTimer: 0
   moveDeltaTime: 1.5
@@ -334,6 +332,20 @@ MonoBehaviour:
   range: 12
   distance: 0
   speed: 3
+--- !u!114 &6572232418241246802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127030575398826640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5c626dd18d12a49a45fea579859f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 7127030575314587089}
+  health: 2
 --- !u!1 &7127030575550134395
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,9 +9,6 @@ using UnityEngine.UI;
 public class PatrolEnemy : MonoBehaviour
 {
     private Rigidbody rb;
-    public float health = 3;
-    public float maxHealth = 3;
-    [SerializeField] private Slider healthBar;
     [SerializeField] private int damage = 1;
     public float moveTimer;
     [SerializeField] public float moveDeltaTime = 1.5f;
@@ -35,13 +32,10 @@ public class PatrolEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        healthBar.value = health / maxHealth;
     }
 
     void Update()
     {
-        healthBar.value = health / maxHealth;
-
         transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
 
         onRange = Vector3.Distance(transform.position, player.position) < range;
@@ -64,14 +58,6 @@ public class PatrolEnemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 
 
 }

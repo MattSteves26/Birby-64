@@ -9,9 +9,7 @@ public class Enemy : MonoBehaviour
 {
 
     private Rigidbody rb;
-    public float health = 3;
-    public float maxHealth = 3;
-    [SerializeField] private Slider healthBar;
+
     [SerializeField] private int damage = 1;
     public float moveTimer;
     [SerializeField] public float moveDeltaTime = 1.5f;
@@ -32,12 +30,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        healthBar.value = health / maxHealth;
     }
 
     void Update()
     {
-        healthBar.value = health / maxHealth;
         distance = Vector2.Distance(transform.position, player.position);
         Debug.Log(distance);
 
@@ -89,12 +85,4 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }
