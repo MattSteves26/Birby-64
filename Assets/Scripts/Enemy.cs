@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public float distance;
     public float speed = 1.0f;
 
-
+    public Animator anim;
 
 
     // Start is called before the first frame update
@@ -40,10 +40,12 @@ public class Enemy : MonoBehaviour
         if (distance < range)
         {
             chasePlayer = true;
+            if (anim) {anim.SetBool("isActive", true);}
         }
         else
         {
             chasePlayer = false;
+            if (anim) {anim.SetBool("isActive", false);}
         }
     }
 

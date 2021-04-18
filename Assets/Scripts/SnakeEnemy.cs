@@ -39,6 +39,7 @@ public class SnakeEnemy : MonoBehaviour
     public float jumpForceAttack = 6.0f;
     int jumpAttack = 0;
 
+    public Animator anim;
 
 
 
@@ -71,6 +72,7 @@ public class SnakeEnemy : MonoBehaviour
         if (jumpDistance < jumpRange)
         {
             SnakeJump = true;
+            anim.SetTrigger("jumpin");
         }
         else
         {

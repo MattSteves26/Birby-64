@@ -3,6 +3,7 @@ Title - Wallpaper
 Greener - Four Beers Polka
 Pipeland - Tango de Manzana
 CircleTree - Skye Cuillun
+Thorns - fearless first
 FlappyBird - SurfShimmy
 Clouds - Blue Ska
 Mole - Electro Cabello
@@ -37,4 +38,8 @@ License: https://filmmusic.io/standard-license
 
 Electro Cabello by Kevin MacLeod
 Link: https://incompetech.filmmusic.io/song/3705-electro-cabello
+License: https://filmmusic.io/standard-license
+
+Fearless First by Kevin MacLeod
+Link: https://incompetech.filmmusic.io/song/3742-fearless-first
 License: https://filmmusic.io/standard-license
