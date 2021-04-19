@@ -1779,7 +1779,7 @@ Transform:
   - {fileID: 642338148233415108}
   - {fileID: 2960391808856124480}
   m_Father: {fileID: 7300140693612941341}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.5479791, y: -90.00001, z: 89.99999}
 --- !u!1 &2496541539485701431
 GameObject:
@@ -2433,7 +2433,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3117570659666888037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 9206267169812600206}
@@ -3854,11 +3854,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4467638940848525123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.06, y: 0.91799164, z: 0}
+  m_LocalPosition: {x: -2.0599995, y: 0.548, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7300140693612941341}
-  m_RootOrder: 0
+  m_Father: {fileID: 5536097320165785199}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4673249191246357502
 GameObject:
@@ -5105,7 +5105,6 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.36999166, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2597508033616972470}
   - {fileID: 6476534628051868563}
   - {fileID: 7883782991075841726}
   m_Father: {fileID: 5536097320165785199}
@@ -6313,7 +6312,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 7300140693612941341}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3953100540792005041
 SkinnedMeshRenderer:
@@ -7233,6 +7232,7 @@ Transform:
   m_Children:
   - {fileID: 3273285973880470872}
   - {fileID: 7300140693612941341}
+  - {fileID: 2597508033616972470}
   m_Father: {fileID: 7129849630413235549}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7346,6 +7346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EndLevel: {fileID: 0}
   healthBoost: 1
+  damage: 1
   speedDeltaTime: 4
   scoreText: {fileID: 1434064690917169530}
   deadScoreText: {fileID: 8427509863576076395}
