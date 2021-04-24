@@ -1,4 +1,9 @@
-﻿using System.Collections;
+/*﻿
+The way this file works is state the starting position where you want to fly to stay
+The best way to do this is to make the area where you place it in the scene the same as the starting position
+Then use the length and width to decide the size of the figure-8
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
