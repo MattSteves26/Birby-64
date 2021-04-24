@@ -79,25 +79,16 @@ public class SmoothFollow : MonoBehaviour
 		
 		
 		//Smooth Look At Target (Camera angle)
-		//This rotates the camera with a set speed to look at the player when their up high or falling.
-		//It rotates the camera back to zero at a set speed when the player is low
+		//This rotates the camera with a set speed to look at the player.
 		//just turn off smoothLookAtTarget if you don't want to use this ~Dévon
 		if(smoothLookAtTargetX){
-			if(wantedHeight >= maxHeight || target.gameObject.GetComponent<Rigidbody>().velocity.y < -10){
-				Vector3 relativePos = new Vector3(target.position.x, currentHeight, target.position.z) - transform.position;
-				Quaternion wantedRotationAngleX = Quaternion.LookRotation(relativePos);
-				wantedRotationAngleX = new Quaternion(wantedRotationAngleX.x * -100.0f,wantedRotationAngleX.y,wantedRotationAngleX.z,wantedRotationAngleX.w);
-				float currentRotationAngleX = transform.eulerAngles.x;
-				currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, wantedRotationAngleX.x, rotationDamping * Time.deltaTime);
-				Quaternion currentRotationX = Quaternion.Euler(currentRotationAngleX, transform.eulerAngles.y, transform.eulerAngles.z);
-				transform.rotation = currentRotationX;			
-			}
-			else{
-				float currentRotationAngleX = transform.eulerAngles.x;
-				currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, 0, rotationDamping * Time.deltaTime);
-				Quaternion currentRotationX = Quaternion.Euler(currentRotationAngleX, transform.eulerAngles.y, transform.eulerAngles.z);
-				transform.rotation = currentRotationX;	
-			}
+			Vector3 relativePos = new Vector3(target.position.x, currentHeight, target.position.z) - transform.position;
+			Quaternion wantedRotationAngleX = Quaternion.LookRotation(relativePos);
+			wantedRotationAngleX = new Quaternion(wantedRotationAngleX.x * -100.0f,wantedRotationAngleX.y,wantedRotationAngleX.z,wantedRotationAngleX.w);
+			float currentRotationAngleX = transform.eulerAngles.x;
+			currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, wantedRotationAngleX.x, rotationDamping * Time.deltaTime);
+			Quaternion currentRotationX = Quaternion.Euler(currentRotationAngleX, transform.eulerAngles.y, transform.eulerAngles.z);
+			transform.rotation = currentRotationX;
 		}
 		// Set the height of the camera
 		transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);

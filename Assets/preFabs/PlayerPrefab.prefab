@@ -2959,13 +2959,13 @@ MonoBehaviour:
   target: {fileID: 5536097320165785199}
   distance: 15
   height: 0
-  heightDamping: 100
+  heightDamping: 2
   rotationDamping: 3
   maxHeight: 5
   minHeight: 0
   smoothLookAtTargetX: 1
   smoothLookAtTargetY: 0
-  cameraChecksIsGrounded: 1
+  cameraChecksIsGrounded: 0
 --- !u!1 &3556514638757447647
 GameObject:
   m_ObjectHideFlags: 0
