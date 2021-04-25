@@ -4301,6 +4301,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3244812374778739985, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244812374778739985, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155044689160573616, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155044689160573616, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155044689160573616, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5536097318615801891, guid: 24265b5fa24d56443bbbdd7188cd5d42,
         type: 3}
       propertyPath: m_ClearFlags
@@ -4419,12 +4444,22 @@ PrefabInstance:
     - target: {fileID: 8628790454550794768, guid: 24265b5fa24d56443bbbdd7188cd5d42,
         type: 3}
       propertyPath: heightDamping
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8628790454550794768, guid: 24265b5fa24d56443bbbdd7188cd5d42,
         type: 3}
       propertyPath: rotationDamping
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628790454550794768, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: smoothLookAtTargetY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628790454550794768, guid: 24265b5fa24d56443bbbdd7188cd5d42,
+        type: 3}
+      propertyPath: cameraChecksIsGrounded
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24265b5fa24d56443bbbdd7188cd5d42, type: 3}
