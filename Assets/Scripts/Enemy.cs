@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public float speed = 1.0f;
 
     public Animator anim;
+    public Transform model;
 
 
     // Start is called before the first frame update
@@ -41,11 +42,13 @@ public class Enemy : MonoBehaviour
         {
             chasePlayer = true;
             if (anim) {anim.SetBool("isActive", true);}
+            
         }
         else
         {
             chasePlayer = false;
             if (anim) {anim.SetBool("isActive", false);}
+            
         }
     }
 
@@ -59,11 +62,13 @@ public class Enemy : MonoBehaviour
             {
                 rb.velocity = new Vector3(speed, 0, 0);
                 goingRight = true;
+                model.localRotation = Quaternion.Euler(0,90,0);
             }
             else
             {
                 rb.velocity = new Vector3(-speed, 0, 0);
                 goingRight = false;
+                model.localRotation = Quaternion.Euler(0,-90,0);
             }
         }
     }

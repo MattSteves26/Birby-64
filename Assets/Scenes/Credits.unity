@@ -255,8 +255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133.99805, y: -28}
-  m_SizeDelta: {x: 200, y: 379.9794}
+  m_AnchoredPosition: {x: 351.19, y: -464.42}
+  m_SizeDelta: {x: 632.98615, y: 1254.6309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258050434
 MonoBehaviour:
@@ -308,7 +308,105 @@ MonoBehaviour:
     Boaz
 
 
-    William'
+    William
+
+
+
+    Unity
+
+    Blender
+    (3D Models)
+
+    TexGraph (Textures)
+
+    Bxfr (Sounds)
+
+
+    Wallpaper by Kevin
+    MacLeod
+
+    Link: https://incompetech.filmmusic.io/song/4604-wallpaper
+
+    License:
+    https://filmmusic.io/standard-license
+
+    
+
+    Four Beers'' Polka by Kevin
+    MacLeod
+
+    Link: https://incompetech.filmmusic.io/song/3774-four-beers-polka
+
+    License:
+    https://filmmusic.io/standard-license
+
+    
+
+    Tango de Manzana by Kevin
+    MacLeod
+
+    Link: https://incompetech.filmmusic.io/song/4460-tango-de-manzana
+
+    License:
+    https://filmmusic.io/standard-license
+
+    
+
+    Skye Cuillin by Kevin MacLeod
+
+    Link:
+    https://incompetech.filmmusic.io/song/4371-skye-cuillin
+
+    License: https://filmmusic.io/standard-license
+
+    
+
+    Surf
+    Shimmy by Kevin MacLeod
+
+    Link: https://incompetech.filmmusic.io/song/4448-surf-shimmy
+
+    License:
+    https://filmmusic.io/standard-license
+
+    
+
+    Blue Ska by Kevin MacLeod
+
+    Link:
+    https://incompetech.filmmusic.io/song/3453-blue-ska
+
+    License: https://filmmusic.io/standard-license
+
+    
+
+    Electro
+    Cabello by Kevin MacLeod
+
+    Link: https://incompetech.filmmusic.io/song/3705-electro-cabello
+
+    License:
+    https://filmmusic.io/standard-license
+
+    
+
+    Fearless First by Kevin MacLeod
+
+    Link:
+    https://incompetech.filmmusic.io/song/3742-fearless-first
+
+    License: https://filmmusic.io/standard-license
+
+
+    You!
+    :)
+
+
+    Thank you for playing
+
+
+    This game was created for CS370 at Suny
+    Polytechnic Spring of 2021'
 --- !u!222 &258050435
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -663,8 +761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.00195, y: -28}
-  m_SizeDelta: {x: 200, y: 379.9794}
+  m_AnchoredPosition: {x: -86.00195, y: -486.17}
+  m_SizeDelta: {x: 200, y: 1296.3282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467773462
 MonoBehaviour:
@@ -698,26 +796,65 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Group Manager
+  m_Text: 'Team Captain
 
 
-    Group Member
+    Group Members
 
 
-    Group Member
 
 
-    Group Member
 
 
-    Group
-    Member
 
 
-    Group Member
 
 
-    Group Member'
+
+
+
+    Tools Used
+
+
+
+
+
+    Music
+    Credits
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Special Thanks:'
 --- !u!222 &1467773463
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -352,6 +352,7 @@ MonoBehaviour:
   distance: 0
   speed: 3
   anim: {fileID: 2725529257289882742}
+  model: {fileID: 4728305924182638897}
 --- !u!114 &6572232418241246802
 MonoBehaviour:
   m_ObjectHideFlags: 0
