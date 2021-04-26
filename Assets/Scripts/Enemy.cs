@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         distance = Vector2.Distance(transform.position, player.position);
-        Debug.Log(distance);
+       // Debug.Log(distance);
 
         if (distance < range)
         {

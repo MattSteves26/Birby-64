@@ -57,8 +57,8 @@ public class SnakeEnemy : MonoBehaviour
         healthBar.value = health / maxHealth;
         distance = Vector2.Distance(transform.position, player.position);
         jumpDistance = Vector2.Distance(transform.position, player.position);
-        Debug.Log(distance);
-        Debug.Log(jumpDistance);
+       // Debug.Log(distance);
+        //Debug.Log(jumpDistance);
 
         if (distance < range)
         {

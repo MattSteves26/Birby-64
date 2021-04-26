@@ -27,6 +27,7 @@ public class playerHealth : MonoBehaviour
     {
         health -= damage;
         if(health <= 0){
+            healthBar.value = 0;
             Destroy(gameObject);
             DeadPlayer.enabled = true;
         }
