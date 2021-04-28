@@ -17,6 +17,11 @@ public class Paralaxer : MonoBehaviour
         public float min;
         public float max;
     }
+    [System.Serializable]
+    public struct YRotRange {
+        public float min;
+        public float max;
+    }
 
     public GameObject Prefab;
     public int poolSize;
@@ -24,6 +29,7 @@ public class Paralaxer : MonoBehaviour
     public float spawnRate;
 
     public YSpawnRange ySpawnRange;
+    public YRotRange yRotRange;
     public Vector3 defaultSpawnPos;
     public bool spawnImmediate;
     public Vector3 immediateSpawnPos;
@@ -93,16 +99,25 @@ public class Paralaxer : MonoBehaviour
         Transform t = GetPoolObject();
         if(t == null) return; //pool size is too small
         Vector3 pos = Vector3.zero;
-        pos.x = (defaultSpawnPos.x * Camera.main.aspect) / targetAspect;;
+        Quaternion rot = Quaternion.Euler(0,Random.Range(yRotRange.min, yRotRange.max), 0);
+        t.rotation = rot;
+        pos.x = (defaultSpawnPos.x * Camera.main.aspect) / targetAspect;
+        Debug.Log("Position x" + pos.x);
         pos.y = Random.Range(ySpawnRange.min, ySpawnRange.max);
         t.position = pos;
     }
 
     void SpawnImmediate(){
         Transform t = GetPoolObject();
-        if(t == null) return; //pool size is too small
+        if(t == null) {
+            Debug.Log("pool size too small");
+            return; 
+        }
         Vector3 pos = Vector3.zero;
+        Quaternion rot = Quaternion.Euler(0,Random.Range(yRotRange.min, yRotRange.max), 0);
+        t.rotation = rot;
         pos.x = (immediateSpawnPos.x * Camera.main.aspect) / targetAspect;
+        Debug.Log("SIPosition x" + pos.x);
         pos.y = Random.Range(ySpawnRange.min, ySpawnRange.max);
         t.position = pos;
         Spawn();
