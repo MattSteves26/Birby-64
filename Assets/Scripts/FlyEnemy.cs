@@ -17,6 +17,8 @@ public class FlyEnemy : MonoBehaviour
 
     public Vector3 startPos;
 
+    [SerializeField] private int damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,4 +40,14 @@ public class FlyEnemy : MonoBehaviour
 
         transform.position = new Vector3(x, y, z);
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
+
+        }
+    }
 }
+
