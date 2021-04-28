@@ -2,7 +2,7 @@
 this code works very similarly to how the catepiller enemy
 you can change the speed with the speed float
 you also need to set the tracking of the enemy
-set the player variable to the Player prefab to start the tracking
+set the player variable to the Player transform to start the tracking
 */
 
 using System.Collections;
