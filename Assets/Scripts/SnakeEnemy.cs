@@ -1,4 +1,4 @@
-﻿/*
+/*
 this code works very similarly to how the catepiller enemy
 you can change the speed with the speed float
 you also need to set the tracking of the enemy
@@ -14,9 +14,7 @@ public class SnakeEnemy : MonoBehaviour
 {
 
     private Rigidbody rb;
-    public float health = 3;
-    public float maxHealth = 3;
-    [SerializeField] private Slider healthBar;
+   
     [SerializeField] private int damage = 1;
     public float moveTimer;
     [SerializeField] public float moveDeltaTime = 1.5f;
@@ -25,7 +23,7 @@ public class SnakeEnemy : MonoBehaviour
     public float range = 7.0f;
 
     private bool chasePlayer = false;
-    
+
 
     public float distance;
     public float speed = 1.0f;
@@ -39,7 +37,7 @@ public class SnakeEnemy : MonoBehaviour
     public float jumpForceAttack = 6.0f;
     int jumpAttack = 0;
 
-    public Animator anim;
+    //public Animator anim;
 
 
 
@@ -47,17 +45,17 @@ public class SnakeEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        healthBar.value = health / maxHealth;
+        
 
         jumping = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
     void Update()
     {
-        healthBar.value = health / maxHealth;
+        
         distance = Vector2.Distance(transform.position, player.position);
         jumpDistance = Vector2.Distance(transform.position, player.position);
-       // Debug.Log(distance);
+        // Debug.Log(distance);
         //Debug.Log(jumpDistance);
 
         if (distance < range)
@@ -72,7 +70,7 @@ public class SnakeEnemy : MonoBehaviour
         if (jumpDistance < jumpRange)
         {
             SnakeJump = true;
-            anim.SetTrigger("jumpin");
+            //anim.SetTrigger("jumpin");
         }
         else
         {
@@ -96,11 +94,11 @@ public class SnakeEnemy : MonoBehaviour
 
         if (chasePlayer && Time.time > moveTimer && jumpAttack == 0)
         {
-           
+
             {
                 rb.AddForce(jumping * jumpForceAttack, ForceMode.Impulse);
                 rb.velocity = new Vector3(-speed, 0, 0);
-                
+
             }
 
             jumpAttack = 1;
@@ -109,10 +107,10 @@ public class SnakeEnemy : MonoBehaviour
 
         if (chasePlayer && Time.time > moveTimer && jumpAttack == 1)
         {
-           
+
             {
                 rb.velocity = new Vector3(-speed, 0, 0);
-                
+
             }
         }
     }
@@ -122,19 +120,12 @@ public class SnakeEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
-         
+
             rb.AddForce(new Vector3(4, 1, 0), ForceMode.Impulse);
             moveTimer = Time.time + moveDeltaTime;
-    
+
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 }
