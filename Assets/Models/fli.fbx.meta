@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: 80fdaed90306b1b42a32e9e10b123aca
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -3880581976594992817
+    second: ArmatureAction
+  - first:
+      74: -2552546163807241679
+    second: Armature|Blink
   externalObjects: {}
   materials:
     materialImportMode: 1

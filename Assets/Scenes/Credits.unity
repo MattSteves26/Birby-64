@@ -255,8 +255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 351.19, y: -464.42}
-  m_SizeDelta: {x: 632.98615, y: 1254.6309}
+  m_AnchoredPosition: {x: 351.19, y: -562.63}
+  m_SizeDelta: {x: 632.98615, y: 1451.0525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258050434
 MonoBehaviour:
@@ -330,27 +330,26 @@ MonoBehaviour:
     License:
     https://filmmusic.io/standard-license
 
-    
 
-    Four Beers'' Polka by Kevin
-    MacLeod
 
-    Link: https://incompetech.filmmusic.io/song/3774-four-beers-polka
+    Four Beers'' Polka by Kevin MacLeod
 
-    License:
-    https://filmmusic.io/standard-license
+    Link:
+    https://incompetech.filmmusic.io/song/3774-four-beers-polka
 
-    
+    License: https://filmmusic.io/standard-license
 
-    Tango de Manzana by Kevin
-    MacLeod
+
+
+    Tango
+    de Manzana by Kevin MacLeod
 
     Link: https://incompetech.filmmusic.io/song/4460-tango-de-manzana
 
     License:
     https://filmmusic.io/standard-license
 
-    
+
 
     Skye Cuillin by Kevin MacLeod
 
@@ -359,7 +358,7 @@ MonoBehaviour:
 
     License: https://filmmusic.io/standard-license
 
-    
+
 
     Surf
     Shimmy by Kevin MacLeod
@@ -369,7 +368,7 @@ MonoBehaviour:
     License:
     https://filmmusic.io/standard-license
 
-    
+
 
     Blue Ska by Kevin MacLeod
 
@@ -378,7 +377,7 @@ MonoBehaviour:
 
     License: https://filmmusic.io/standard-license
 
-    
+
 
     Electro
     Cabello by Kevin MacLeod
@@ -388,7 +387,7 @@ MonoBehaviour:
     License:
     https://filmmusic.io/standard-license
 
-    
+
 
     Fearless First by Kevin MacLeod
 
@@ -398,15 +397,23 @@ MonoBehaviour:
     License: https://filmmusic.io/standard-license
 
 
-    You!
-    :)
+    Hyperfun
+    by Kevin MacLeod
+
+    Link: https://incompetech.filmmusic.io/song/3891-hyperfun
+
+    License:
+    https://filmmusic.io/standard-license
+
+
+    You! :)
 
 
     Thank you for playing
 
 
-    This game was created for CS370 at Suny
-    Polytechnic Spring of 2021'
+    This
+    game was created for CS370 at Suny Polytechnic, Spring of 2021'
 --- !u!222 &258050435
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -573,6 +580,134 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1044546508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1044546510}
+  - component: {fileID: 1044546509}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1044546509
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044546508}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5c9e1bf9fd6810a45b44b6fd4e0ad77c,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 781635f0d9044c54ab1de332f11cf443, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1044546510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044546508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 269.37497, y: 8.074385, z: 36.867996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101976366
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,8 +896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.00195, y: -486.17}
-  m_SizeDelta: {x: 200, y: 1296.3282}
+  m_AnchoredPosition: {x: -86.00195, y: -537.53}
+  m_SizeDelta: {x: 200, y: 1399.0507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467773462
 MonoBehaviour:
@@ -800,6 +935,16 @@ MonoBehaviour:
 
 
     Group Members
+
+
+
+
+
+
+
+
+
+
 
 
 

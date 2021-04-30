@@ -20,6 +20,7 @@ public class FB_PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpTimer = 0f; 
     [SerializeField] private float jumpDeltaTime = 0.3f;    
     
+    public Animator anim;
     
     void start()
     {
@@ -27,6 +28,7 @@ public class FB_PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();     
         startPos = modelChild.position;  
         game = FB_GameManager.Instance;
+        anim.SetBool("Jumped", true);
     }
 
     void OnEnable()
