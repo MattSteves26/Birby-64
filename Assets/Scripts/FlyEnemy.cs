@@ -19,6 +19,8 @@ public class FlyEnemy : MonoBehaviour
 
     [SerializeField] private int damage = 1;
 
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class FlyEnemy : MonoBehaviour
         height = 4;
 
         Vector3 startPos = transform.position;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -50,4 +54,3 @@ public class FlyEnemy : MonoBehaviour
         }
     }
 }
-
