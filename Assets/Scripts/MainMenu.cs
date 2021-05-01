@@ -54,4 +54,9 @@ public class MainMenu : MonoBehaviour
             optionmenu_switch = 1;
         }
     }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(7);
+    }
 }
