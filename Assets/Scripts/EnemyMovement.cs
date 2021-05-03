@@ -47,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
             }
             tDist += ms * Time.deltaTime;
             Vector3 newPos = pc.path.GetPointAtDistance(tDist, endOfPathInstruction);
-            Debug.Log("Bee newpos: " + newPos);
+            //Debug.Log("Bee newpos: " + newPos);
             if(!knockback){
                 transform.LookAt(newPos);}
             transform.position = newPos;

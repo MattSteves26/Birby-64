@@ -7,10 +7,13 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public static float volumebar;
+    public static float volumebar = 0;
+    public static bool Tog = false;
+    public static int ResolutionInSave = 19;
 
     public AudioMixer audioMixer;
     public Slider slider;
+    public Toggle toggle;
 
     public TMPro.TMP_Dropdown resolutionsDropdown;
 
@@ -42,10 +45,16 @@ public class SettingsMenu : MonoBehaviour
         resolutionsDropdown.RefreshShownValue();
 
         slider.value = volumebar;
+        toggle.isOn = Tog;
+        resolutionsDropdown.value = ResolutionInSave;
+        resolutionsDropdown.RefreshShownValue();
+
     }
 
     public void SetResolution(int resolutionIndex)
     {
+        ResolutionInSave = resolutionIndex;
+        Debug.Log(ResolutionInSave);
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
     }
@@ -63,6 +72,8 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetFullscreen(bool isFullscreen)
     {
+        Tog = !Tog;
+        Debug.Log(Tog);
         Screen.fullScreen = isFullscreen;
     }
 }

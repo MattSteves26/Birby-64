@@ -344,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5c9e1bf9fd6810a45b44b6fd4e0ad77c, type: 2}
   slider: {fileID: 1729035832}
+  toggle: {fileID: 1686686153}
   resolutionsDropdown: {fileID: 746603778}
 --- !u!1001 &63218925
 PrefabInstance:
@@ -460,6 +461,16 @@ PrefabInstance:
     - target: {fileID: 7943831820039443114, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
@@ -978,6 +989,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1391,7 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2889,6 +2910,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3485,7 +3516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4147,6 +4178,16 @@ PrefabInstance:
     - target: {fileID: 7943831820039443114, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
@@ -4880,7 +4921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5343,6 +5384,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5518,7 +5569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5726,6 +5777,7 @@ GameObject:
   - component: {fileID: 1613870248}
   - component: {fileID: 1613870250}
   - component: {fileID: 1613870249}
+  - component: {fileID: 1613870251}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -5943,6 +5995,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1613870249}
+--- !u!114 &1613870251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613870243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4322964cedd4cf48a0f6c705a653ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1665561663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6470,6 +6534,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -6654,7 +6728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -7192,7 +7266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -7322,7 +7396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -7957,6 +8031,16 @@ PrefabInstance:
     - target: {fileID: 7943831820039443114, guid: 117af07c64ad79f4c821765957e493e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7943831820039443115, guid: 117af07c64ad79f4c821765957e493e1,
