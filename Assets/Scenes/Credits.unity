@@ -414,7 +414,7 @@ MonoBehaviour:
 
 
     This
-    game was created for CS370 at Suny Polytechnic, Spring of 2021'
+    game was created for CS370 at Suny Polytechnic, Spring 2021'
 --- !u!222 &258050435
 CanvasRenderer:
   m_ObjectHideFlags: 0

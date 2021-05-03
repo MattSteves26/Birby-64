@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public bool GP { get { return GameIsPaused; } }
     public Canvas PauseMenuUI;
     public Canvas OptionsMenuUI;
 

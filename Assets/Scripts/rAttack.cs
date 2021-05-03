@@ -9,6 +9,7 @@ public class rAttack : MonoBehaviour
     [SerializeField] private Transform shotPoint; 
     [SerializeField] private float shotTime = 0;
     [SerializeField] private float shotDelay = 1;
+    [SerializeField] private PauseMenu PM;
     
     public Animator anim;
     // Start is called before the first frame update
@@ -20,7 +21,9 @@ public class rAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(PM.GP){
+            return;
+        }
         if (Input.GetButton("Fire1") && shotTime <=0){
             Instantiate(projectile, shotPoint.position, Quaternion.Inverse(shotPoint.rotation));
             shotTime += shotDelay;
