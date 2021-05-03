@@ -62,10 +62,10 @@ public class SmoothFollow : MonoBehaviour
 		if(smoothLookAtTargetY){
 				currentRotationAngleY = transform.eulerAngles.y;
 				float wantedRotationAngleY = target.eulerAngles.y - 90f;
-				Debug.Log("Wanted Rotation: " + wantedRotationAngleY);
+				//Debug.Log("Wanted Rotation: " + wantedRotationAngleY);
 				currentRotationAngleY = Mathf.LerpAngle(currentRotationAngleY, wantedRotationAngleY, rotationDamping * Time.deltaTime);
 				Quaternion currentRotationY = Quaternion.Euler(transform.eulerAngles.x, currentRotationAngleY, transform.eulerAngles.z);
-				Debug.Log("CurRotY: " + currentRotationY);
+				//zDebug.Log("CurRotY: " + currentRotationY);
 				transform.rotation = currentRotationY;
 		}
 		// Convert the angle into a rotation

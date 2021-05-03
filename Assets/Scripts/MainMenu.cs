@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 
 
 public class MainMenu : MonoBehaviour
@@ -12,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     private static int levelmenu_switch = 1;
     private static int optionmenu_switch = 1;
+   
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -59,4 +63,5 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(7);
     }
+
 }

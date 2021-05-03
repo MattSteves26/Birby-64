@@ -98,10 +98,10 @@ public class playerMovement : MonoBehaviour
         if(isSpline){
             tDist = pc.path.GetClosestDistanceAlongPath(transform.position);
             tDist += XAxisInput * splinespeed * Time.deltaTime;
-            Debug.Log("Tdist: " + tDist);
+            //Debug.Log("Tdist: " + tDist);
             Vector3 newpos = pc.path.GetPointAtDistance(tDist);
             newpos.y = transform.position.y;
-            Debug.Log("newpos: " + newpos);
+            //Debug.Log("newpos: " + newpos);
             transform.rotation = pc.path.GetRotationAtDistance(tDist);
             rb.MovePosition(newpos);    
         }

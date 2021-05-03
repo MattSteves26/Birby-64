@@ -13,7 +13,7 @@ public class playerTrigger : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text deadScoreText;
     int score;
-
+    
 
 
     public void Start(){
@@ -47,6 +47,13 @@ public class playerTrigger : MonoBehaviour
                 deadScoreText.text = "Score: " + score;
                 break;
             case "Finish":
+                if (LevelUnLock.unlockLevel < 8)
+                {
+                    LevelUnLock.unlockLevel++;
+                    if(LevelUnLock.unlockLevel == 5)
+                        LevelUnLock.unlockLevel++;
+                }
+                    
                 EndLevel.enabled = true;
                 break;
             default:
