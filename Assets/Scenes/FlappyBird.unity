@@ -342,12 +342,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479489650}
-        m_MethodName: 
+      - m_Target: {fileID: 479489651}
+        m_MethodName: onQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1728,7 +1728,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Main Menu
 --- !u!222 &1646019641
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2797,6 +2797,7 @@ GameObject:
   - component: {fileID: 5681285724676718766}
   - component: {fileID: 6772648491216785947}
   - component: {fileID: 9204718571616468120}
+  - component: {fileID: 9204718571616468121}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2824,3 +2825,16 @@ MonoBehaviour:
   jumpTimer: 0
   jumpDeltaTime: 0.3
   anim: {fileID: 865830769}
+--- !u!65 &9204718571616468121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204718571616468119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14073524, y: 0.11647669, z: 0.125}
+  m_Center: {x: 0.007867575, y: -0.0042616897, z: 0}

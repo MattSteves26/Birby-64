@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FB_GameManager : MonoBehaviour
 {
@@ -106,6 +107,12 @@ public class FB_GameManager : MonoBehaviour
        scoreText.text = "Score: 0";
        SetPageState(PageState.Start);
    }
+
+   public void onQuit()
+    {
+        //go back to menu
+        SceneManager.LoadScene(0);
+    }
 
    public void StartGame()
    {
