@@ -13,6 +13,11 @@ public class SpiderEnemy : MonoBehaviour
 {
     private Rigidbody rb;
 
+    [SerializeField] private int damage = 1;
+    public float moveTimer;
+    [SerializeField] public float moveDeltaTime = 1.5f;
+
+
     public float speed = 1.0f;
 
     public float min;
@@ -42,6 +47,16 @@ public class SpiderEnemy : MonoBehaviour
             rb.velocity = new Vector3(0, 0);
             rb.AddForce(new Vector3(0, bounce), ForceMode.Impulse);
         }
+
+        if (collide.gameObject.tag == "Player")
+        {
+            collide.collider.GetComponent<playerHealth>().TakeDamage(damage);
+
+            rb.AddForce(new Vector3(4, 1, 0), ForceMode.Impulse);
+            moveTimer = Time.time + moveDeltaTime;
+
+        }
     }
 }
+
 
