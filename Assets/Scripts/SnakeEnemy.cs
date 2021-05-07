@@ -3,6 +3,8 @@ this code works very similarly to how the catepiller enemy
 you can change the speed with the speed float
 you also need to set the tracking of the enemy
 set the player variable to the Player transform to start the tracking
+
+This is used for the snake enemy
 */
 
 using System.Collections;
@@ -52,7 +54,9 @@ public class SnakeEnemy : MonoBehaviour
 
     void Update()
     {
-        
+        //These determine how far the player is from the snake
+        //Distance will be used in chasing
+        //jumpDistance will be used will activating the jump to alert the player you are getting too close to the snake
         distance = Vector2.Distance(transform.position, player.position);
         jumpDistance = Vector2.Distance(transform.position, player.position);
         // Debug.Log(distance);
@@ -85,13 +89,14 @@ public class SnakeEnemy : MonoBehaviour
     void FixedUpdate()
     {
 
+//This activates once, and the snake will jump at the player
         if (SnakeJump == true && jump == 0)
         {
             rb.AddForce(jumping * jumpForce, ForceMode.Impulse);
 
             jump = 1;
         }
-
+//This activates and chases the player, the chase works in one direction
         if (chasePlayer && Time.time > moveTimer && jumpAttack == 0)
         {
 
@@ -117,6 +122,8 @@ public class SnakeEnemy : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+    
+    //This damages the player
         if (collision.gameObject.tag == "Player")
         {
             collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
