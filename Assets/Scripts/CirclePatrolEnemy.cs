@@ -1,9 +1,5 @@
-﻿//This Enemy is the Patrol enemy that will be used for circle levels
-//This Can go in a circle and keeps going in a circle
-//This goes in a circle, but how it gets placed in the scene stills needs to be tested more
-//Prototype at the moment
-//The way to set this up is to change the y in the unity editor, once that happens, set the width and height to 20
-//You cab change the width and height to change how wide the circle you create it
+﻿//This code is not used in final Version
+//This code simulates a circle
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
