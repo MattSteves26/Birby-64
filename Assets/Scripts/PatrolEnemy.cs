@@ -1,6 +1,8 @@
 //you can use the speed to change how fast you go 
 //In the pos1 and pos2, you declare where the enemy starts and where the enemy ends, you can't drag and drop
 //You can change these in the Unity editor on the right
+
+//This is used for the bee enemy
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,8 +38,10 @@ public class PatrolEnemy : MonoBehaviour
 
     void Update()
     {
+    //This updates the player movement
         transform.position = Vector3.Lerp(pos1, pos2, (Mathf.Sin(speed * Time.time) + 1.0f) / 2.0f);
 
+    
         onRange = Vector3.Distance(transform.position, player.position) < range;
     }
 
@@ -51,6 +55,8 @@ public class PatrolEnemy : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+    
+    //This damages the player
         if (collision.gameObject.tag == "Player")
         {
             collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
