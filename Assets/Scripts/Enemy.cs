@@ -1,5 +1,7 @@
 //This enemy will just be placed into the scene, once in the scene, you can change the range it can detect the player and the speed
 //Increasing the speed float can allow for the speed to be quicker or slower, and the range float can be changed for the player to be detected. 
+//This code is used for the caterpiller enemy
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+    
+    //This part with distance determines how far the player is from the enemy
         distance = Vector2.Distance(transform.position, player.position);
        // Debug.Log(distance);
 
@@ -56,6 +60,9 @@ public class Enemy : MonoBehaviour
     // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
+    
+    //This part activates the chasing
+    //The caterpiller only follows in the x not in the y
         if (chasePlayer && Time.time > moveTimer)
         {
             if (transform.position.x < player.position.x)
@@ -77,6 +84,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+        
+        //Does damage to the player
             collision.collider.GetComponent<playerHealth>().TakeDamage(damage);
             if (goingRight == true)
             {
